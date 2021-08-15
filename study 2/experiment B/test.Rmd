@@ -1,0 +1,15 @@
+---
+always_allow_html: true
+---
+```{r setup, include=FALSE}
+library("ggplot2")
+library("plotly")
+```
+
+This text was generated in Rmarkdown.
+
+```{r plot, echo=FALSE}
+p<-ggplot(cars, aes(speed, dist)) + geom_point()
+p
+#ggplotly(p)
+```
