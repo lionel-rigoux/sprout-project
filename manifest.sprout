@@ -1,0 +1,5 @@
+title: "Long project title"
+author: "You!"
+format: html
+processors:
+  body-weight: pyrat-bodyweight

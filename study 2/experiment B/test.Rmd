@@ -1,15 +1,22 @@
 ---
 always_allow_html: true
 ---
+
 ```{r setup, include=FALSE}
 library("ggplot2")
-library("plotly")
 ```
 
 This text was generated in Rmarkdown.
 
-```{r plot, echo=FALSE}
+```{r plot}
 p<-ggplot(cars, aes(speed, dist)) + geom_point()
-p
-#ggplotly(p)
+if (Sys.getenv('FORMAT') == 'pdf') {
+  p
+} else {
+  htmlwidgets::saveWidget(widgetframe::frameableWidget(plotly::ggplotly(p)), 'widget1.html', selfcontained=FALSE)
+}
+
+widgetPath <- paste(Sys.getenv('REL_PATH'), 'widget1.html', sep='/')
 ```
+
+<iframe width='40%' height='300px' scrolling = 'no' seamless = 'seamless' frameBorder = '0' src='`r widgetPath`' ></iframe>
