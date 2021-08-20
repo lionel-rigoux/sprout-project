@@ -9,14 +9,16 @@ library("ggplot2")
 This text was generated in Rmarkdown.
 
 ```{r plot}
-p<-ggplot(cars, aes(speed, dist)) + geom_point()
+p<-ggplot(cars, aes(speed, dist)) + geom_point() + theme_classic(base_size = 14, base_line_size = 1.2)
 if (Sys.getenv('FORMAT') == 'pdf') {
   p
 } else {
-  htmlwidgets::saveWidget(plotly::ggplotly(p), 'widget1.html')
+  g <- plotly::ggplotly(p)
+  g <- plotly::config(g, displayModeBar = F)
+  htmlwidgets::saveWidget(g, 'widget1.html')
 }
 
 widgetPath <- file.path(Sys.getenv('REL_PATH'), 'widget1.html')
 ```
 
-<iframe width='40%' height='300px' scrolling = 'no' seamless = 'seamless' frameBorder = '0' src='`r widgetPath`' ></iframe>
+<p align="center"><iframe width='50%' height='350px' scrolling = 'no' seamless = 'seamless' frameBorder = '0' src='`r widgetPath`' ></iframe></p>
