@@ -13,10 +13,10 @@ p<-ggplot(cars, aes(speed, dist)) + geom_point()
 if (Sys.getenv('FORMAT') == 'pdf') {
   p
 } else {
-  htmlwidgets::saveWidget(widgetframe::frameableWidget(plotly::ggplotly(p)), 'widget1.html', selfcontained=FALSE)
+  htmlwidgets::saveWidget(plotly::ggplotly(p), 'widget1.html')
 }
 
-widgetPath <- paste(Sys.getenv('REL_PATH'), 'widget1.html', sep='/')
+widgetPath <- file.path(Sys.getenv('REL_PATH'), 'widget1.html')
 ```
 
 <iframe width='40%' height='300px' scrolling = 'no' seamless = 'seamless' frameBorder = '0' src='`r widgetPath`' ></iframe>
